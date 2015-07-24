@@ -1,0 +1,66 @@
+package: org.robovm.pods.mopub
+framework: GameAnalytics
+include: 
+#    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
+#    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coregraphics.yaml
+#    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/corelocation.yaml
+#    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coretelephony.yaml
+#    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/eventkit.yaml
+#    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/eventkitui.yaml
+#    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/mediaplayer.yaml
+#    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/messageui.yaml
+#    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/storekit.yaml
+#    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/systemconfiguration.yaml
+#    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
+    #import <AdSupport/AdSupport.h>
+    #import <CoreGraphics/CoreGraphics.h>
+    #import <CoreLocation/CoreLocation.h>
+    #import <CoreTelephony/CTTelephonyNetworkInfo.h>
+    #import <EventKit/EventKit.h>
+    #import <EventKitUI/EventKitUI.h>
+    #import <Foundation/Foundation.h>
+    #import <MediaPlayer/MediaPlayer.h>
+    #import <MessageUI/MessageUI.h>
+    #import <QuartzCore/QuartzCore.h>
+    #import <StoreKit/StoreKit.h>
+    #import <SystemConfiguration/SystemConfiguration.h>
+    #import <UIKit/UIKit.h>
+clang_args: ['-x', 'objective-c']
+header_root: '/../robopods/META-INF/robovm/ios/libs/'
+headers:
+    - MoPubSDK/MoPub.h
+    - MoPubSDK/MPAdConversionTracker.h
+    - MoPubSDK/MPAdView.h
+    - MoPubSDK/MPInterstitialAdController.h
+typedefs:
+    
+enums:
+    GAResourceFlowType: {first: GAResourceFlowTypeSource}
+    GAProgressionStatus: {first: GAProgressionStatusStart}
+    GAErrorSeverity: {first: GAErrorSeverityDebug}
+        
+classes:
+    MoPub: # DONE
+        methods:
+            '+sharedInstance:':
+                name: sharedInstance
+            '-initializeRewardedVideoWithGlobalMediationSettings:delegate:':
+                name: initializeRewardedVideo
+            '-start:':
+                name: start
+            '-version:':
+                name: version
+            '-bundleIdentifier:':
+                name: bundleIdentifier
+    MPAdConversionTracker: # DONE
+        methods:
+            '+sharedConversionTracker:':
+                name: sharedConversionTracker
+            '-reportApplicationOpenForApplicationID:':
+                name: reportApplicationOpen
+    MPAdView: # DONE
+            methods:
+                'initWithAdUnitId:size:':
+                    name: sharedConversionTracker
+                '-reportApplicationOpenForApplicationID:':
+                    name: reportApplicationOpen

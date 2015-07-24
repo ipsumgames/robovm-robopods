@@ -1,0 +1,38 @@
+<config>
+    <resources>
+        <resource>
+            <directory>res</directory>
+        </resource>
+    </resources>
+    <libs>
+        <lib>z</lib>
+    </libs>
+    <frameworks>
+        <framework>MillennialMedia</framework>
+        <framework>SpeechKit</framework>
+        <framework>GoogleMobileAds</framework>
+
+        <framework>AdSupport</framework>
+        <framework>CoreGraphics</framework>
+        <framework>CoreLocation</framework>
+        <framework>CoreTelephony</framework>
+        <framework>EventKit</framework>
+        <framework>EventKitUI</framework>
+        <framework>Foundation</framework>
+        <framework>MediaPlayer</framework>
+        <framework>QuartzCore</framework>
+        <framework>StoreKit</framework>
+        <framework>SystemConfiguration</framework>
+        <framework>UIKit</framework>
+        <framework>AudioToolbox</framework>
+        <framework>AVFoundation</framework>
+        <framework>iAd</framework>
+        <framework>MessageUI</framework>
+        <framework>MobileCoreServices</framework>
+        <framework>PassKit</framework>
+        <framework>Social</framework>
+    </frameworks>
+    <frameworkPaths>
+        <path>libs</path>
+    </frameworkPaths>
+</config>
