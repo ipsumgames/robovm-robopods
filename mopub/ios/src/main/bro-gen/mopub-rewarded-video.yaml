@@ -1,0 +1,153 @@
+package: org.robovm.pods.mopub.rewardedvideo
+framework: GameAnalytics
+include: 
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coregraphics.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/corelocation.yaml
+#    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coretelephony.yaml
+#    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/eventkit.yaml
+#    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/eventkitui.yaml
+#    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/mediaplayer.yaml
+#    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/messageui.yaml
+#    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/storekit.yaml
+#    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/systemconfiguration.yaml
+clang_args: ['-x', 'objective-c']
+header_root: '/'
+headers:
+    - MoPubSDK.lib/RewardedVideo/MPMediationSettingsProtocol.h
+    - MoPubSDK.lib/RewardedVideo/MPRewardedVideo.h
+    - MoPubSDK.lib/RewardedVideo/MPRewardedVideoError.h
+    - MoPubSDK.lib/RewardedVideo/MPRewardedVideoReward.h
+    - MoPubSDK.lib/RewardedVideo/MPConstants.h
+typedefs:
+    
+enums:
+    MPNativeAdOrientation: {first: MPNativeAdOrientationAny}
+        
+classes:
+    MoPub: # DONE
+        methods:
+            '+sharedInstance:':
+                name: sharedInstance
+            '-initializeRewardedVideoWithGlobalMediationSettings:delegate:':
+                name: initializeRewardedVideo
+            '-globalMediationSettingsForClass:':
+                name: globalMediationSettingsForClass
+            '-start:':
+                name: start
+            '-version:':
+                name: version
+            '-bundleIdentifier:':
+                name: bundleIdentifier
+
+    MPAdConversionTracker: # DONE
+        methods:
+            '+sharedConversionTracker:':
+                name: sharedConversionTracker
+            '-reportApplicationOpenForApplicationID:':
+                name: reportApplicationOpen
+
+    MPAdView: # DONE
+            methods:
+                '-initWithAdUnitId:size:':
+                    name: init
+                '-loadAd:':
+                    name: loadAd
+                '-refreshAd:':
+                    name: refreshAd
+                '-forceRefreshAd:':
+                    name: forceRefreshAd
+                '-rotateToOrientation:':
+                    name: rotateToOrientation
+                '-lockNativeAdsToOrientation:':
+                    name: lockNativeAdsToOrientation
+                '-unlockNativeAdsOrientation:':
+                    name: unlockNativeAdsOrientation
+                '-allowedNativeAdsOrientation:':
+                    name: allowedNativeAdsOrientation
+                '-adContentViewSize:':
+                    name: adContentViewSize
+                '-stopAutomaticallyRefreshingContents:':
+                    name: stopAutomaticallyRefreshingContents
+                '-startAutomaticallyRefreshingContents:':
+                    name: startAutomaticallyRefreshingContents
+                '-customEventDidLoadAd:':
+                    exclude: true
+                '-customEventDidFailToLoadAd:':
+                    exclude: true
+                '-customEventActionWillBegin:':
+                    exclude: true
+                '-customEventActionDidEnd:':
+                    exclude: true
+                '-setAdContentView:':
+                    exclude: true
+                '-ignoresAutorefresh:':
+                    property: true
+                    exclude: true
+
+    MPInterstitialAdController: # DONE
+                methods:
+                    '+interstitialAdControllerForAdUnitId:':
+                        name: init
+                    '-loadAd:':
+                        name: loadAd
+                    '-showFromViewController:':
+                        name: showFromViewController
+                    '+removeSharedInterstitialAdController:':
+                        name: removeSharedInterstitialAdController
+                    '+sharedInterstitialAdControllers:':
+                        name: sharedInterstitialAdControllers
+                    '-customEventDidLoadAd:':
+                        name: customEventDidLoadAd
+                        exclude: true
+                    '-customEventDidFailToLoadAd:':
+                        name: customEventDidLoadAd
+                        exclude: true
+                    '-customEventActionWillBegin:':
+                        name: customEventActionWillBegin
+                        exclude: true
+
+protocols:
+    MPAdViewDelegate: # DONE
+        methods:
+            '-viewControllerForPresentingModalView:':
+                name: viewControllerForPresentingModalView
+            '-adViewDidLoadAd:':
+                name: adViewDidLoadAd
+            '-adViewDidFailToLoadAd:':
+                name: adViewDidFailToLoadAd
+            '-willPresentModalViewForAd:':
+                name: willPresentModalViewForAd
+            '-didDismissModalViewForAd:':
+                name: didDismissModalViewForAd
+            '-willLeaveApplicationFromAd:':
+                name: willLeaveApplicationFromAd
+
+    MPInterstitialAdControllerDelegate: # DONE
+            methods:
+                '-interstitialDidLoadAd:':
+                    name: interstitialDidLoadAd
+                '-interstitialDidFailToLoadAd:':
+                    name: interstitialDidFailToLoadAd
+                '-interstitialWillAppear:':
+                    name: interstitialWillAppear
+                '-interstitialDidAppear:':
+                    name: interstitialDidAppear
+                '-interstitialWillDisappear:':
+                    name: interstitialWillDisappear
+                '-interstitialDidDisappear:':
+                    name: interstitialDidDisappear
+                '-interstitialDidExpire:':
+                    name: interstitialDidExpire
+                '-interstitialDidReceiveTapEvent:':
+                    name: interstitialDidReceiveTapEvent
+                '-dismissInterstitial:':
+                    name: dismissInterstitial
+                    exclude: true
+
+constants:
+    # Make sure we don't miss any constants if new ones are introduced in a later version
+    (k?MP.*):
+        class: MoPub
+        name: 'Constant__#{g[0]}'

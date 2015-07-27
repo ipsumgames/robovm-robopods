@@ -2,9 +2,15 @@
     <resources>
         <resource>
             <directory>res</directory>
+            <skipPngCrush>true</skipPngCrush>
         </resource>
     </resources>
     <libs>
+        <lib>libs/libMoPubSDK.a</lib>
+        <lib>libs/libAppLovinSDK.a</lib>
+        <lib>libs/libInMobi.a</lib>
+
+        <lib>sqlite3</lib>
         <lib>z</lib>
     </libs>
     <frameworks>
