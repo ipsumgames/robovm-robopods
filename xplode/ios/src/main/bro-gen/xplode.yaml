@@ -1,0 +1,166 @@
+package: org.robovm.pods.xplode
+framework: GameAnalytics
+include: 
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
+clang_args: ['-x', 'objective-c']
+header_root: '/../robopods/META-INF/robovm/ios/libs/'
+headers:
+    - XplodeSDK.framework/Headers/Xplode.h
+    - XplodeSDK.framework/Headers/Xplode+Analytics.h
+    - XplodeSDK.framework/Headers/Xplode+Promotions.h
+    - XplodeSDK.framework/Headers/XplodePromotionDelegate.h
+    - XplodeSDK.framework/Headers/Xplode+PushNotifications.h
+    - XplodeSDK.framework/Headers/Xplode+Rewards.h
+    - XplodeSDK.framework/Headers/XPLReward.h
+
+typedefs:
+    'void (^)(NSError *)': '@Block VoidBlock1<NSError>'
+    'void (^)(BOOL, NSError *)': '@Block VoidBlock2<Boolean, NSError>'
+    'void (^)(void)': '@Block VoidBlock1<Void>'
+    'void (^)(int)': '@Block VoidBlock1<Integer>'
+    'void (^)(NSURL *)': '@Block VoidBlock1<NSURL>'
+    'void (^)(NSArray *)': '@Block VoidBlock1<NSArray>'
+
+enums:
+    XPLPromotionDockingPosition: {first: XPLPromotionDockingPositionBottom}
+    XPLPromotionDockDimensions: {first: XPLPromotionDockDimensionsDefault}
+
+categories:
+    Analytics: # DONE
+        owner: Xplode
+    Promotions: # DONE
+        owner: Xplode
+    PushNotifications: # DONE
+        owner: Xplode
+    Rewards: # DONE
+        owner: Xplode
+        
+classes:
+    Xplode: # DONE
+        methods:
+            # Xplode.h
+            '+initializeWithOrganizationSecret:launchOptions:andCompletionHandler:':
+                name: init
+            '+initializeWithAppHandle:appSecret:andCompletionHandler:':
+                exclude: true # deprecated
+            '+initializeWithAppHandle:appSecret:launchOptions:andCompletionHandler:':
+                exclude: true # deprecated
+            '+appHandle':
+                exclude: true # deprecated
+            '+appSecret':
+                exclude: true # deprecated
+            '+isInitialized':
+                name: isInitialized
+            '+initializationError':
+                name: initializationError
+            # Xplode.h end
+
+            # Xplode+Analytics.h
+            '+logEvent:':
+                name: logEvent
+            '+logEvent:withParameters:':
+                name: logEvent
+            # Xplode+Analytics.h end
+
+            # Xplode+Promotions.h
+            '+promotionDelegate':
+                name: promotionDelegate
+            '+isCurrentDeviceSupported':
+                name: isCurrentDeviceSupported
+            '+setPromotionDelegate:':
+                name: setPromotionDelegate
+            '+setPromotionPreloadingOnLaunch:':
+                name: setPromotionPreloadingOnLaunch
+            '+cachePromotionForBreakpoint:':
+                name: cachePromotionForBreakpoint
+            '+presentPromotionForBreakpoint:':
+                exclude: true # deprecated
+            '+presentPromotionForBreakpoint:onCompletion:':
+                exclude: true # deprecated
+            '+presentPromotionForBreakpoint:withCompletionHandler:andDismissHandler:':
+                name: presentPromotion
+            '+isPromotionCachedForBreakpoint:':
+                name: isPromotionCachedForBreakpoint
+            '+isPromotionOpen:':
+                name: isPromotionOpen
+            '+isPromotionDockVisible:':
+                name: isPromotionDockVisible
+            '+setupPromotionDockForBreakpoint:atPosition:':
+                exclude: true # deprecated
+            '+setupPromotionDockForBreakpoint:atPosition:withCompletionHandler:':
+               name: setupPromotionDock
+            '+setupPromotionDockForBreakpoint:atPosition:withDimensions:':
+                name: setupPromotionDock
+            '+setupPromotionDockForBreakpoint:atPosition:withDimensions:andCompletionHandler:':
+                name: setupPromotionDock
+            '+showPromotionDockAndBounce:':
+                name: showPromotionDockAndBounce
+            '+hidePromotionDock':
+                name: hidePromotionDock
+            '+removePromotionDock':
+                name: removePromotionDock
+            '+dismissPromotion':
+                name: dismissPromotion
+            '+allowedOrientations':
+                name: allowedOrientations
+            '+setAllowedOrientations:':
+                name: setAllowedOrientations
+            '+setAllowedPromotionOrientations:':
+                 exclude: true # deprecated
+            '+promotionPreferences':
+                 exclude: true # deprecated
+            '+setPromotionPreferences:':
+                 exclude: true # deprecated
+            # Xplode+Promotions.h end
+
+            # Xplode+PushNotifications.h
+            '+registerDeviceTokenWithData:withCompletionHandler:':
+                name: registerDeviceToken
+            '+registerDeviceTokenWithString:withCompletionHandler:':
+                name: registerDeviceToken
+            '+handlePushNotificationPayload:withFetchCompletionHandler:':
+                name: handlePushNotificationPayload
+            # Xplode+PushNotifications.h end
+
+            # Xplode+Rewards.h
+            '+affiliateLinkForBreakpoint:withCompletionHandler:':
+                name: affiliateLinkForBreakpoint
+            '+loadAvailableRewards:':
+                name: loadAvailableRewards
+            # Xplode+Rewards.h end
+
+    XPLReward: # DONE
+        methods:
+            '-consumeReward':
+                name: consumeReward
+
+protocols:
+    XplodePromotionDelegate: # DONE
+        methods:
+            '-promotionDidLoadForBreakpoint:':
+                 exclude: true # deprecated
+            '-.*':
+                 trim_after_first_colon: true
+
+functions:
+    # Make sure we don't miss any functions if new ones are introduced in a later version
+    (k?XPL.*):
+        class: XplodeGlobal
+        name: 'Function__#{g[0]}'
+
+values:
+    XPLPromotion(.*):
+        enum: XPLPromotion
+        name: '#{g[0]}'
+        type: NSString
+
+    # Make sure we don't miss any values if new ones are introduced in a later version
+    (k?XPL.*):
+        class: XplodeGlobal
+        name: 'Value__#{g[0]}'
+
+constants:
+    # Make sure we don't miss any constants if new ones are introduced in a later version
+    (k?XPL.*):
+        class: XplodeGlobal
+        name: 'Constant__#{g[0]}'

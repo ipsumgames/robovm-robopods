@@ -1,0 +1,24 @@
+<config>
+    <libs>
+        <lib>sqlite3</lib>
+        <lib>z</lib>
+    </libs>
+    <frameworkPaths>
+        <path>libs</path>
+    </frameworkPaths>
+    <frameworks>
+        <framework>XplodeSDK</framework>
+
+        <framework>Accelerate</framework>
+        <framework>AdSupport</framework>
+        <framework>CoreTelephony</framework>
+        <framework>MediaPlayer</framework>
+        <framework>QuartzCore</framework>
+        <framework>Security</framework>
+        <framework>StoreKit</framework>
+    </frameworks>
+
+    <exportedSymbols>
+        <symbol>XPLPromotion*</symbol>
+    </exportedSymbols>
+</config>
