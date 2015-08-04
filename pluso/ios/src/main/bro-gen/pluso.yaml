@@ -1,0 +1,67 @@
+package: org.robovm.pods.pluso
+framework: PlusoSDK
+include: 
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/messageui.yaml
+clang_args: ['-x', 'objective-c']
+header_root: '/../robopods/META-INF/robovm/ios/libs/'
+headers:
+    - PlusoSDK.framework/Headers/PlusoSDK.h
+    - PlusoSDK.framework/Headers/PLSDKActionBar.h
+    - PlusoSDK.framework/Headers/PLSDKActionBarDelegate.h
+    - PlusoSDK.framework/Headers/PLSDKConstants.h
+    - PlusoSDK.framework/Headers/PLSDKSharer.h
+typedefs:
+#    'void (^)(CBStory *)': '@Block VoidBlock1<CBStory>'
+#    'void (^)(NSError *, NSDictionary *)': '@Block VoidBlock2<NSError, NSDictionary<?, ?>>'
+    
+enums:
+    PLSDKActivityType: {first: PLSDKActivityTypeRate}
+    PLSDKShareProvider: {}
+
+categories:
+
+
+classes:
+    PlusoSDK: # DONE
+        methods:
+            '+sharedInstance':
+                name: sharedInstance
+            '+setAPIKey:':
+                name: setAPIKey
+
+    PLSDKActionBar: {} # DONE
+
+    PLSDKSharer: # DONE
+        methods:
+            '+shareUrl:withProvider:delegate:':
+                name: sharedInstance
+
+protocols:
+    PLSDKActionBarDelegate: # DONE
+        methods:
+            '-PLSDKActionBarDidTapCancelButton:':
+                name: onActionBarDidTapCancelButton
+            '-PLSDKActionBar:ratedWithRate:':
+                name: onActionBar
+            '-PLSDKActionBar:sharedWithProvider:':
+                name: onActionBar
+
+functions:
+    # Make sure we don't miss any functions if new ones are introduced in a later version
+    (k?PL.*):
+        class: PlusoGlobal
+        name: 'Function__#{g[0]}'
+
+values:
+    # Make sure we don't miss any values if new ones are introduced in a later version
+    (k?PL.*):
+        class: PlusoGlobal
+        name: 'Value__#{g[0]}'
+
+constants:
+    # Make sure we don't miss any constants if new ones are introduced in a later version
+    (k?PL.*):
+        class: PlusoGlobal
+        name: 'Constant__#{g[0]}'

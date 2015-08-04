@@ -171,5 +171,6 @@
         <module>google-play-games</module>
         <module>google-plus</module>
         <module>parse</module>
+        <module>pluso</module>
     </modules>
 </project>
